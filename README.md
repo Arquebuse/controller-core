@@ -15,7 +15,7 @@ A .NET 8 Minimal API service that manages client subscriptions, queries Active 
 - **LDAP** for AD interactions (`System.DirectoryServices`)
 - **SQLite** for subscription storage
 - **WNS HTTP calls** using app credentials
-- JSON audit logging
+- **JSON** audit logging
 
 ## Technologies
 
@@ -36,3 +36,12 @@ Invoke-RestMethod -Uri https://localhost:5001/register -Method Post -Body $clien
 # Send a notification
 Invoke-RestMethod -Uri https://localhost:5001/notify -Method Post -Body @{ filters=@{ group='IT' }; message='App X is down' }
 ```
+
+## Backlog
+
+- REST API to register/unregister clients (secured via AD authentication)
+- LDAP querying capability for AD-based user/computer targeting
+- Endpoint to create/send notifications to WNS (filterable by user, computer, AD groups)
+- Persistence of subscription data (SQLite)
+- Basic audit logging (JSON format) of notifications sent, errors, and authentication attempts
+- HTTPS support (self-signed cert for MVP, production certs for later deployments)
